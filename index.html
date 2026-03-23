@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="description" content="Track your daily habits and build streaks">
+<title>Habits</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<div class="wrap">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <h1>My Habits</h1>
+      <p id="motiveLine">Keep the streak alive 🔥</p>
+    </div>
+    <div class="header-date">
+      <div class="day" id="dayNum"></div>
+      <div class="month" id="monthName"></div>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-bar-wrap">
+    <div class="progress-meta">
+      <span class="progress-label">Today's Progress</span>
+      <span class="progress-pct" id="progressPct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stat-card"><div class="stat-val g" id="statDone">0</div><div class="stat-lbl">Done Today</div></div>
+    <div class="stat-card"><div class="stat-val a" id="statTotal">0</div><div class="stat-lbl">Total Habits</div></div>
+    <div class="stat-card"><div class="stat-val y" id="statStreak">0</div><div class="stat-lbl">Best Streak</div></div>
+  </div>
+
+  <!-- Habits List -->
+  <div class="section-title">
+    <span>Today</span>
+    <span id="dateLabel"></span>
+  </div>
+  <div class="habits-list" id="habitsList"></div>
+
+  <!-- Weekly Heatmap -->
+  <div class="heatmap-card">
+    <div class="heatmap-title">This Week</div>
+    <div class="heatmap-grid" id="heatmap"></div>
+  </div>
+
+</div>
+
+<!-- FAB -->
+<button class="fab" onclick="openModal()" title="Add Habit">+</button>
+
+<!-- Modal -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <div class="modal-title">New Habit</div>
+
+    <div class="fg">
+      <label>Habit Name</label>
+      <input class="fi" type="text" id="fName" placeholder="e.g. Morning Run, Read 30 mins...">
+    </div>
+
+    <div class="fg">
+      <label>Icon</label>
+      <div class="emoji-row" id="emojiPicker"></div>
+    </div>
+
+    <div class="fg">
+      <label>Color</label>
+      <div class="color-row" id="colorPicker"></div>
+    </div>
+
+    <div class="fg">
+      <label>Best Time</label>
+      <select class="fi" id="fTime">
+        <option value="Morning">🌅 Morning</option>
+        <option value="Afternoon">☀️ Afternoon</option>
+        <option value="Evening">🌆 Evening</option>
+        <option value="Night">🌙 Night</option>
+        <option value="Anytime">⚡ Anytime</option>
+      </select>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-add" onclick="addHabit()">Add Habit</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
